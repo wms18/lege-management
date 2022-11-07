@@ -4,10 +4,11 @@
  * @Author: 吴毛三
  * @Date: 2022-11-04 00:02:00
  * @LastEditors: 吴毛三
- * @LastEditTime: 2022-11-04 00:42:13
+ * @LastEditTime: 2022-11-07 14:17:37
  */
+import handleNum from "./NumberStatus.ts";
 const defaultState = {
-  num: 20,
+  ...handleNum.state,
 };
 const reducer = (
   state = defaultState,
@@ -16,10 +17,10 @@ const reducer = (
   let newState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
     case "add":
-      newState.num++;
+      handleNum.actions.add(newState);
       break;
     case "add1":
-      newState.num = newState.num + action.value;
+      handleNum.actions.add1(newState, action);
       break;
     default:
       break;
